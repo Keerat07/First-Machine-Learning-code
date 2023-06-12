@@ -1,0 +1,30 @@
+MACHINE LEARNING CHECK DIABETES ALGORITHM
+
+import numpy as np
+import pandas as pd
+from sklearn.modelselection import traintestsplit
+from skelearn.metrics import accuracy score
+from sklearn.preprocessig import standardscalar
+from sklearn import svm
+diabetes_data=pd.read_csv('path of the file')
+diabetes_data.shape(Gives number of rows and columns in the data)
+diabetes_data.describe()(gives mean standaad deviation and etc)
+diabetes_data['outcome'].value_counts()(gives number of person who are diabetic adn non diabetic)
+diabetes_data.groupby('outcome').mean()
+x=diabetes_data.drop(columns='outcome')[all the columns except outcome column which is labeled column)
+y=diabetes_data['outcome']
+scalar=standardscalar()[assigning an standardscalar object to a scalar variable]
+scalar.fit(x)
+stddata=scalar.transform(x)
+x=stddata
+xtrain,ytrain,xtest,ytest=traintestsplit(x,y,testsize=0.2,stratify=y.randome_state=2)(testsize is 20% of data will be used for testing,stratify is that the distribution will be of equal proportions as respect to y variable that is target,randomestate=?)
+classifier=svm.SVC(kernel='linear')[assigning an support vector machine to classifier variable]
+classifier.fit(xtrain,ytrain)[building the machine respect to the input data given)
+predict1=classifier.predict(xtrain)[return outcome for the given input data]
+accurate1=accuracy_score(predict1,ytrian)[give percentage of how much our data was accurate]
+inputdata=(anything)[any data to just verify our machine]
+inputdatanumpyarray=np.asarray(inputdata)[as the input data was in form of list andhad to be converted in the form of array]
+inputrehape=inputdatanumpyarray.reshape(1,-1)[data to be reshaped so that it can be transformed further as 1 is given for row and -1 for automatical detected columns]
+newdata=scalar.transform(inputreshape)
+predict1=classifier.predict(newdata)
+print(predict1)
